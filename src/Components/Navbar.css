@@ -1,0 +1,106 @@
+/* src/components/Navbar.css */
+
+/* Root color tokens (replace if you already use CSS variables) */
+:root {
+  --bg: #07080a;
+  --panel: rgba(255,255,255,0.04);
+  --muted: #bfc7cf;
+  --accent-start: #08a5d6;
+  --accent-end: #7c3aed;
+}
+
+/* Top header wrapper */
+.nav-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(6,7,10,0.95), rgba(6,7,10,0.90));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  z-index: 999;
+}
+
+/* inner layout */
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* brand */
+.brand {
+  display:flex;
+  align-items:center;
+}
+.brand-link { display:flex; gap:10px; align-items:center; text-decoration:none; color:var(--muted); }
+.logo {
+  width:40px; height:40px; border-radius:10px;
+  background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
+  color:#041018; display:grid; place-items:center; font-weight:700;
+}
+.brand-text { font-weight:600; font-size:0.95rem; color:var(--muted); }
+
+/* desktop links container (hidden on small screens) */
+.links-desktop { margin-left:auto; display:none; }
+.links-desktop ul { display:flex; gap:10px; align-items:center; list-style:none; margin:0; padding:0; }
+.links-desktop a {
+  color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:8px; font-weight:600;
+}
+.links-desktop a:hover { color:#fff; background:var(--panel); transform:translateY(-2px); transition:all 150ms; }
+
+/* CTA */
+.cta {
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:999px;
+  background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
+  color:#041018; font-weight:700;
+  margin-left:8px;
+}
+
+/* dropdown */
+.dropdown { position:relative; }
+.dropdown-btn { background:none; border:0; color:var(--muted); padding:8px 10px; border-radius:8px; font-weight:600; cursor:pointer; }
+.dropdown-panel {
+  position:absolute; right:0; top:calc(100% + 8px); min-width:160px;
+  background: #0b0c0e; border:1px solid rgba(255,255,255,0.03);
+  border-radius:10px; box-shadow: 0 8px 30px rgba(2,6,23,0.6); padding:6px 4px;
+}
+.dropdown-panel a { display:block; padding:8px 12px; color:var(--muted); text-decoration:none; border-radius:8px; }
+.dropdown-panel a:hover { background:var(--panel); color:#fff; }
+
+/* hamburger - visible on small */
+.hamburger {
+  margin-left:auto;
+  width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+  background:transparent; border:0; cursor:pointer; display:flex; flex-direction:column; gap:4px;
+}
+.hamburger .bar { width:18px; height:2px; background:var(--muted); display:block; transition:all 200ms; }
+.hamburger .bar.open { background:#fff; transform:rotate(45deg); } /* simple visual cue */
+
+/* mobile panel */
+.mobile-panel {
+  background: linear-gradient(180deg, rgba(6,7,10,0.98), rgba(6,7,10,0.98));
+  border-top: 1px solid rgba(255,255,255,0.03);
+  padding: 12px 18px;
+}
+.mobile-panel ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px; }
+.mobile-panel a { color:var(--muted); text-decoration:none; padding:10px; border-radius:8px; display:block; }
+.mobile-panel a:hover { background:var(--panel); color:#fff; }
+
+.mobile-cta { text-align:center; }
+
+/* responsive breakpoints */
+@media (min-width: 768px) {
+  .links-desktop { display:block; }
+  .hamburger { display:none; }
+  .mobile-panel { display:none; }
+}
+
+/* if you had main margin-left to make space for left sidebar, remove it now:
+   main { margin-left: 0; margin-top: 64px; }  <-- shift page down so header doesn't overlap content
+*/

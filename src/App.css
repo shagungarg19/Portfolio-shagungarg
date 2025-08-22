@@ -1,0 +1,8 @@
+html, body {
+  margin: 0;          /* removes browser default gaps */
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden; /* prevent accidental horizontal scroll */
+}
+*, *::before, *::after { box-sizing: inherit; }

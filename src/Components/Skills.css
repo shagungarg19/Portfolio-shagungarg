@@ -1,0 +1,189 @@
+/* SkillsSection - two-row rectangular marquee, polished glass theme */
+
+/* Theme accents (match contact section) */
+:root {
+  --bg-black: #000;
+  --card-bg: rgba(255,255,255,0.03);
+  --card-border: rgba(255,255,255,0.06);
+  --muted: #9aa6ad;
+  --text: #e6edf0;
+  --accent-1: #08a5d6;
+  --accent-2: #ff6ec4;
+  --accent-3: #7c3aed;
+  --glass-blur: 10px;
+
+  /* marquee durations (top slower, bottom slightly faster) */
+  --marquee-top-duration: 26s;
+  --marquee-bottom-duration: 18s;
+}
+
+/* Section layout - broader */
+.skills-section {
+  background: var(--bg-black);
+  color: var(--text);
+  padding: 4rem 1rem;           /* slightly compressed vertical padding so section feels broader */
+  box-sizing: border-box;
+}
+
+.skills-inner {
+  max-width: 1400px;           /* broader than before */
+  margin: 0 auto;
+  padding: 0 0.6rem;
+}
+
+.skills-title {
+  margin: 0 0 0.25rem 0;
+  font-size: clamp(1.25rem, 1.05rem + 1vw, 2.1rem);
+  font-weight: 800;
+  color: var(--text);
+}
+.skills-sub {
+  margin: 0 0 1rem 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+/* marquee wrapper holds two rows stacked */
+.skills-marquee-wrapper {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 14px;
+  margin-top: 12px;
+  border-radius: 14px;
+}
+
+/* marquee container */
+.skills-marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 0;
+  background: rgba(255,255,255,0.005);
+  border-radius: 12px;
+}
+
+/* Track that moves left; duplicated content in JSX makes seamless loop */
+.marquee-track {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  will-change: transform;
+  animation: marquee linear infinite;
+  animation-timing-function: linear;
+}
+
+/* Different durations per row for visual interest */
+.marquee-top .marquee-track { animation-duration: var(--marquee-top-duration); }
+.marquee-bottom .marquee-track { animation-duration: var(--marquee-bottom-duration); }
+
+/* Pause animation when user hovers, focuses, or a card is focused */
+.skills-marquee:hover .marquee-track,
+.skills-marquee:focus-within .marquee-track,
+.skill-card:focus .marquee-track {
+  animation-play-state: paused;
+}
+
+/* skill card (rectangular) - slightly larger for broader look */
+.skill-card {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 260px;
+  max-width: 340px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(var(--glass-blur)) saturate(120%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(120%);
+  box-shadow: 0 10px 36px rgba(0,0,0,0.6);
+  transition: transform .22s cubic-bezier(.2,.9,.2,1), box-shadow .22s ease, background .18s ease;
+  cursor: default;
+  outline: none;
+}
+
+/* hover & focus uplift */
+.skill-card:hover,
+.skill-card:focus {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 54px rgba(8,165,214,0.12), 0 0 26px rgba(124,58,237,0.07);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+}
+
+/* name & percent left area */
+.skill-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+.skill-name {
+  font-weight: 800;
+  color: var(--text);
+  font-size: 1.02rem;
+}
+.skill-percent {
+  font-weight: 800;
+  color: var(--accent-1);
+  font-size: 0.98rem;
+}
+
+/* progress bar */
+.skill-bar-wrap {
+  width: 100%;
+  height: 10px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.02);
+}
+.skill-bar {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
+  box-shadow: 0 8px 20px rgba(8,165,214,0.08), inset 0 -6px 8px rgba(0,0,0,0.25);
+  transition: width 1.2s cubic-bezier(.2,.9,.2,1);
+}
+
+/* small note */
+.skills-note {
+  margin-top: 0.85rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Responsive: reduce card width & speed up marquee on smaller screens */
+@media (max-width: 1200px) {
+  .skill-card { min-width: 230px; max-width: 300px; padding: 12px 14px; }
+  :root { --marquee-top-duration: 22s; --marquee-bottom-duration: 16s; }
+}
+@media (max-width: 920px) {
+  .skills-inner { max-width: 980px; }
+  .skill-card { min-width: 200px; max-width: 260px; padding: 10px 12px; }
+  :root { --marquee-top-duration: 20s; --marquee-bottom-duration: 14s; }
+  .skills-marquee-wrapper { gap: 10px; }
+}
+@media (max-width: 520px) {
+  .skills-inner { padding: 0 0.4rem; }
+  .skill-card { min-width: 160px; max-width: 220px; padding: 9px 10px; }
+  :root { --marquee-top-duration: 18s; --marquee-bottom-duration: 12s; }
+  .skills-title { font-size: 1.25rem; }
+  .skills-sub { font-size: 0.88rem; }
+}
+
+/* Accessibility: pause animation when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none !important; transform: none !important; }
+  .skill-bar { transition: none !important; }
+  .skill-card:hover, .skill-card:focus { transform: none; box-shadow: none; }
+}
+
+/* Marquee keyframes:
+   Because each row contains duplicated items, translating -50% makes it a seamless loop.
+   We use translate3d for smoother GPU-accelerated animation.
+*/
+@keyframes marquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
