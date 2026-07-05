@@ -8,6 +8,9 @@ import ui3 from "../assets/UI_3.png";
 import ui4 from "../assets/UI_4.png";
 import tech1 from "../assets/Tech_1.png";
 import tech2 from "../assets/Tech_2.png";
+import tech3 from "../assets/Tech_3.png";
+import tech4 from "../assets/Tech_4.png";
+
 
 function ProjectCard({ project, variant }) {
   if (variant === "grid") {
@@ -91,13 +94,26 @@ export default function Projects() {
     {
       title: "Weather API-App",
       image: tech1,
-      link: "https://github.com/shagungarg19/Weather_API-App",
+      link: "https://weather-api-app-one.vercel.app/",
       buttonText: "View Repo",
     },
+    
     {
-      title: "Crop Recommendation System",
+      title: "Pranovate-IT-Solutions" ,
       image: tech2,
-      link: "https://github.com/shagungarg19/Crop_Recomendation_System",
+      link: "https://pranovate-it-sol-comp-web-shagun.vercel.app/",
+      buttonText: "Live Demo",
+    },
+    {
+      title: "Business Website(Freelancing)" ,
+      image: tech3,
+      link: "https://business-website-green-mu.vercel.app/",
+      buttonText: "Live Demo",
+    },
+    {
+      title: "Pixel Circuit Studio(Comapany website)" ,
+      image: tech4,
+      link: "https://pixel-circuit-studio.vercel.app/",
       buttonText: "Live Demo",
     },
   ];

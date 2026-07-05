@@ -95,108 +95,42 @@ export default function AboutSection() {
           </div>
 
           <p className="about-lead">
-            Hi, I’m <strong>Shagun Garg</strong> from Shamli, Uttar Pradesh. I’m currently
-            pursuing <strong>B.Tech (CSE)</strong> at <strong>ABESIT</strong>
+            Hi, I’m <strong>Shagun Garg</strong> from Shamli, Uttar Pradesh. I recently 
+            completed my <strong>B.Tech (CSE)</strong> in Computer Science Engineering <strong> from ABES Institute of Technology,</strong>
             <span className="muted-space"> </span>
-            <span ref={yearsRef} style={{ color: "#08a5d6" }}>4th year</span>. I completed my schooling from 
-            <strong> Scottish International School, Shamli</strong> in 2022.
+            <strong> where I secured 82.3% with distinction. </strong> 
           </p>
 
           <div className="about-columns">
             <div className="about-block">
               <h3 style={{ color: "#08a5d6" }}>What I do</h3>
               <p>
-                I focus on <strong>UI/UX design</strong> and <strong>Full Stack Web Development</strong>.
-                I build accessible, responsive interfaces and implement them using modern front-end
-                tools with attention to usability and performance.
+                I am a<strong>Web Developer</strong> and <strong>and UI/UX Designer </strong>.
+                with hands-on experience in building responsive websites and designing user-friendly interfaces.
+                My technical skills include HTML, CSS, JavaScript, React, Next.js, Python, Node.js, MongoDB, and Figma.
+                I'm excited to contribute my skills while growing professionally. 
               </p>
             </div>
 
             <div className="about-block">
-              <h3 style={{ color: "#08a5d6" }}>Projects & Experience</h3>
+              <h3 style={{ color: "#08a5d6" }}>Experience</h3>
               <p>
-                I have worked on projects like <strong>Know Your Rights</strong> (legal-rights awareness),
-                <strong> Smart Disposal</strong> (smart waste disposal via scanning), and a <strong>Paste App</strong>.
-                I’ve also built a <strong>Blog Website</strong> and I am currently working on a
-                <strong> Secure User Authentication</strong> system.
-              </p>
+                During my job,I worked as a<strong> UI/UX Designer at Nexen Bloom</strong>, where I designed websites and mobile app interfaces,
+                created user flows, and collaborated closely with developers.
+                During my internships, I worked as a  <strong> Web Developer Intern at Pixel Circuit Studio</strong>,
+                where I contributed to responsive web development and worked on Articulate 360 for e-learning projects.
+               Additionally, I completed internships at <strong> Assisto AI as a Python Intern</strong> and <strong> Grootz 
+                as a UI/UX Intern</strong>, which helped strengthen my technical, design, and teamwork skills.
+                </p>
             </div>
           </div>
 
           <br />
 
-          {/* Experience items */}
-          <div className="experience-list" aria-label="Experience / Events">
-            {experienceItems.map((it) => {
-              const isActive = activeSet.has(it.id);
-              return (
-                <div
-                  key={it.id}
-                  role="button"
-                  tabIndex={0}
-                  aria-pressed={isActive ? "true" : "false"}
-                  className={`exp-item ${isActive ? "active" : ""}`}
-                  onClick={() => toggleActive(it.id)}
-                  onKeyDown={(e) => handleKey(e, it.id)}
-                >
-                  <strong>{it.label}</strong>
-                </div>
-              );
-            })}
-          </div>
-
-          <br />
-
-          {/* Internships */}
-          <div style={{ marginBottom: 8, marginTop: 8 }}>
-            <strong style={{ color: "#08a5d6" }}>Internships</strong>
-          </div>
-          <div className="experience-list" aria-label="Internships">
-            {internships.map((it) => {
-              const isActive = activeSet.has(it.id);
-              return (
-                <div
-                  key={it.id}
-                  role="button"
-                  tabIndex={0}
-                  aria-pressed={isActive ? "true" : "false"}
-                  className={`exp-item ${isActive ? "active" : ""}`}
-                  onClick={() => toggleActive(it.id)}
-                  onKeyDown={(e) => handleKey(e, it.id)}
-                >
-                  {it.label}
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Certifications */}
-          <div style={{ marginBottom: 8, marginTop: 8 }}>
-            <strong style={{ color: "#08a5d6" }}>Certifications</strong>
-          </div>
-          <div className="experience-list" aria-label="Certifications">
-            {certifications.map((c) => {
-              const isActive = activeSet.has(c.id);
-              return (
-                <div
-                  key={c.id}
-                  role="button"
-                  tabIndex={0}
-                  aria-pressed={isActive ? "true" : "false"}
-                  className={`exp-item ${isActive ? "active" : ""}`}
-                  onClick={() => toggleActive(c.id)}
-                  onKeyDown={(e) => handleKey(e, c.id)}
-                >
-                  {c.label}
-                </div>
-              );
-            })}
-          </div>
-
           <div className="about-actions">
             <a href="#projects" className="btn about-cta">See Projects</a>
             <a
-              href="/Shagun_Resume.pdf"
+              href="/resume-shagun.pdf"
               className={`btn about-ghost ${cvClicked ? "clicked" : ""}`}
               target="_blank"
               rel="noopener noreferrer"
